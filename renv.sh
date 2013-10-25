@@ -3,8 +3,7 @@ function renv() {
   status|s)
     [[ -n "$GEM_HOME" ]] && echo "GEM_HOME='$GEM_HOME'"
     [[ -n "$GEM_PATH" ]] && echo "GEM_PATH='$GEM_PATH'"
-    echo "PATH='$PATH'"
-    return
+    echo "PATH='$PATH'" && return
   ;;
   reset|r)
     if [[ -z "$RENV_ORIG_PATH" ]] ; then
@@ -29,7 +28,8 @@ function renv() {
       puts "local ruby_engine=#{defined?(RUBY_ENGINE) ? RUBY_ENGINE : 'ruby'}"
       puts "local ruby_version=#{RUBY_VERSION}"
       puts "local gem_path='#{Gem.path.join(':')}'"
-EOF)
+EOF
+)
     local gem_dir="$PWD/.gem/$ruby_engine/$ruby_version"
 
     export RENV_ORIG_PATH="$PATH"
