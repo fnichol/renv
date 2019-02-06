@@ -36,13 +36,13 @@ renv() {
         return 9
       fi
 
-      eval $(
+      eval "$(
         ruby -rubygems - <<-'EOF'
       puts "local ruby_engine=#{defined?(RUBY_ENGINE) ? RUBY_ENGINE : 'ruby'}"
       puts "local ruby_version=#{RUBY_VERSION}"
       puts "local gem_path='#{Gem.path.join(':')}'"
 EOF
-      )
+      )"
       local gem_dir="$PWD/.gem/$ruby_engine/$ruby_version"
 
       export RENV_ORIG_PATH="$PATH"
