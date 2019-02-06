@@ -13,9 +13,19 @@ renv() {
         return 3
       fi
 
-      [[ -n "$RENV_ORIG_GEM_HOME" ]] && GEM_HOME=$RENV_ORIG_GEM_HOME || unset GEM_HOME
-      [[ -n "$RENV_ORIG_GEM_PATH" ]] && GEM_PATH=$RENV_ORIG_GEM_PATH || unset GEM_PATH
-      [[ -n "$RENV_ORIG_PATH" ]] && PATH=$RENV_ORIG_PATH
+      if [[ -n "$RENV_ORIG_GEM_HOME" ]]; then
+        GEM_HOME=$RENV_ORIG_GEM_HOME
+      else
+        unset GEM_HOME
+      fi
+      if [[ -n "$RENV_ORIG_GEM_PATH" ]]; then
+        GEM_PATH=$RENV_ORIG_GEM_PATH
+      else
+        unset GEM_PATH
+      fi
+      if [[ -n "$RENV_ORIG_PATH" ]]; then
+        PATH=$RENV_ORIG_PATH
+      fi
       unset RENV_ORIG_GEM_HOME RENV_ORIG_GEM_PATH RENV_ORIG_PATH
 
       echo "---> renv is reset, GEM_HOME is ${GEM_HOME:-<unset>}"
