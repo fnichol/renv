@@ -1,4 +1,4 @@
-function renv() {
+renv() {
   case "$1" in
     status | s)
       [[ -n "$GEM_HOME" ]] && echo "GEM_HOME='$GEM_HOME'"
