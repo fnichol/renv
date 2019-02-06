@@ -37,7 +37,7 @@ renv() {
       fi
 
       eval "$(
-        ruby -rubygems - <<-'EOF'
+        ruby -rrubygems - <<-'EOF'
       puts "local ruby_engine=#{defined?(RUBY_ENGINE) ? RUBY_ENGINE : 'ruby'}"
       puts "local ruby_version=#{RUBY_VERSION}"
       puts "local gem_path='#{Gem.path.join(':')}'"
