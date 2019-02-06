@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 renv() {
   case "$1" in
     status | s)
