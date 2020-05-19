@@ -38,10 +38,10 @@ renv() {
 
       eval "$(
         ruby -rrubygems - <<-'EOF'
-      puts "local ruby_engine=#{defined?(RUBY_ENGINE) ? RUBY_ENGINE : 'ruby'}"
-      puts "local ruby_version=#{RUBY_VERSION}"
-      puts "local gem_path='#{Gem.path.join(':')}'"
-EOF
+	puts "local ruby_engine=#{defined?(RUBY_ENGINE) ? RUBY_ENGINE : 'ruby'}"
+	puts "local ruby_version=#{RUBY_VERSION}"
+	puts "local gem_path='#{Gem.path.join(':')}'"
+	EOF
       )"
       # shellcheck disable=SC2154
       local gem_dir="$PWD/.gem/$ruby_engine/$ruby_version"
