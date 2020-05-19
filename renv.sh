@@ -28,7 +28,7 @@ renv() {
       fi
       unset RENV_ORIG_GEM_HOME RENV_ORIG_GEM_PATH RENV_ORIG_PATH
 
-      echo "---> renv is reset, GEM_HOME is ${GEM_HOME:-<unset>}"
+      echo "---> renv is reset, GEM_HOME is ${GEM_HOME:-"<unset>"}"
       ;;
     "")
       if [[ -n "$RENV_ORIG_PATH" ]]; then
