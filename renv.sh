@@ -43,6 +43,7 @@ renv() {
       puts "local gem_path='#{Gem.path.join(':')}'"
 EOF
       )"
+      # shellcheck disable=SC2154
       local gem_dir="$PWD/.gem/$ruby_engine/$ruby_version"
 
       export RENV_ORIG_PATH="$PATH"
@@ -51,6 +52,7 @@ EOF
 
       export PATH="$gem_dir/bin:$PATH"
       export GEM_HOME="$gem_dir"
+      # shellcheck disable=SC2154
       export GEM_PATH="$gem_dir:$gem_path"
 
       echo "---> renv is set, GEM_HOME is $GEM_HOME"
