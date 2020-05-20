@@ -1,29 +1,30 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
+# shellcheck disable=SC2039
 
 renv() {
   case "$1" in
     status | s)
-      [[ -n "$GEM_HOME" ]] && echo "GEM_HOME='$GEM_HOME'"
-      [[ -n "$GEM_PATH" ]] && echo "GEM_PATH='$GEM_PATH'"
+      [ -n "${GEM_HOME:-}" ] && echo "GEM_HOME='$GEM_HOME'"
+      [ -n "${GEM_PATH:-}" ] && echo "GEM_PATH='$GEM_PATH'"
       echo "PATH='$PATH'" && return
       ;;
     reset | r)
-      if [[ -z "$RENV_ORIG_PATH" ]]; then
         echo ">>>> renv not set. Try: \`renv'"
+      if [ -z "${RENV_ORIG_PATH:-}" ]; then
         return 3
       fi
 
-      if [[ -n "$RENV_ORIG_GEM_HOME" ]]; then
+      if [ -n "${RENV_ORIG_GEM_HOME:-}" ]; then
         GEM_HOME=$RENV_ORIG_GEM_HOME
       else
         unset GEM_HOME
       fi
-      if [[ -n "$RENV_ORIG_GEM_PATH" ]]; then
+      if [ -n "${RENV_ORIG_GEM_PATH:-}" ]; then
         GEM_PATH=$RENV_ORIG_GEM_PATH
       else
         unset GEM_PATH
       fi
-      if [[ -n "$RENV_ORIG_PATH" ]]; then
+      if [ -n "${RENV_ORIG_PATH:-}" ]; then
         PATH=$RENV_ORIG_PATH
       fi
       unset RENV_ORIG_GEM_HOME RENV_ORIG_GEM_PATH RENV_ORIG_PATH
@@ -31,8 +32,8 @@ renv() {
       echo "---> renv is reset, GEM_HOME is ${GEM_HOME:-"<unset>"}"
       ;;
     "")
-      if [[ -n "$RENV_ORIG_PATH" ]]; then
         echo ">>>> renv already set, GEM_HOME is $GEM_HOME. Try: \`renv reset'"
+      if [ -n "${RENV_ORIG_PATH:-}" ]; then
         return 9
       fi
 
