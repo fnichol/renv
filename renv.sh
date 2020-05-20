@@ -36,6 +36,10 @@ renv() {
       if [ -n "${RENV_ORIG_PATH:-}" ]; then
         return 9
       fi
+      if ! command -v ruby >/dev/null; then
+        echo ">>>> 'ruby' program not found in PATH='${PATH:-}', aborting"
+        return 10
+      fi
 
       eval "$(
         ruby -rrubygems - <<-'EOF'
