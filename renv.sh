@@ -62,9 +62,8 @@ renv() {
 
       echo "---> renv is set, GEM_HOME={$GEM_HOME}"
       ;;
-    help | h | usage | --help | -h | *)
-      echo "usage: renv [reset|status]"
-      return
+    help | h | --help | -h | *)
+      echo "usage: renv [help|reset|status]"
       ;;
   esac
 }
