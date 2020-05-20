@@ -31,7 +31,7 @@ renv() {
 
       echo "---> renv is reset, GEM_HOME='${GEM_HOME:-"<unset>"}'."
       ;;
-    "")
+    set | "")
       if [ -n "${RENV_ORIG_PATH:-}" ]; then
         echo ">>>> renv is active, GEM_HOME='${GEM_HOME:-}'. Try: 'renv reset'"
         return 9
@@ -63,7 +63,7 @@ renv() {
       echo "---> renv is set, GEM_HOME={$GEM_HOME}"
       ;;
     help | h | --help | -h | *)
-      echo "usage: renv [help|reset|status]"
+      echo "usage: renv [help|reset|set|status]"
       ;;
   esac
 }
