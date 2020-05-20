@@ -9,8 +9,8 @@ renv() {
       echo "PATH='$PATH'" && return
       ;;
     reset | r)
-        echo ">>>> renv not set. Try: \`renv'"
       if [ -z "${RENV_ORIG_PATH:-}" ]; then
+        echo ">>>> renv not set. Try: 'renv'"
         return 3
       fi
 
@@ -29,11 +29,11 @@ renv() {
       fi
       unset RENV_ORIG_GEM_HOME RENV_ORIG_GEM_PATH RENV_ORIG_PATH
 
-      echo "---> renv is reset, GEM_HOME is ${GEM_HOME:-"<unset>"}"
+      echo "---> renv is reset, GEM_HOME='${GEM_HOME:-"<unset>"}'."
       ;;
     "")
-        echo ">>>> renv already set, GEM_HOME is $GEM_HOME. Try: \`renv reset'"
       if [ -n "${RENV_ORIG_PATH:-}" ]; then
+        echo ">>>> renv is active, GEM_HOME='${GEM_HOME:-}'. Try: 'renv reset'"
         return 9
       fi
       if ! command -v ruby >/dev/null; then
@@ -60,7 +60,7 @@ renv() {
       # shellcheck disable=SC2154
       export GEM_PATH="$gem_dir:$gem_path"
 
-      echo "---> renv is set, GEM_HOME is $GEM_HOME"
+      echo "---> renv is set, GEM_HOME={$GEM_HOME}"
       ;;
     help | h | usage | --help | -h | *)
       echo "usage: renv [reset|status]"
